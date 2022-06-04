@@ -39,11 +39,11 @@ def GameRool():
     lb1.pack()  
 HwangTo = "C0A55A"
 
-img =Image.open('Backgroundpicture.png')
+img =Image.open('TKback.png')
 bg = ImageTk.PhotoImage(img)
 label = Label(window, image=bg)
 label.place(x = -2,y = -2)
-lb = Label(window,text="윷놀이 게임",font=("궁서체",80),background='#F0E68C')
+lb = Label(window,text="윷놀이 게임",font=("궁서체",80),background='#FDF2E5')
 lb.pack(anchor=CENTER)
 btn1 = Button(window,command=startYut)
 btn2 = Button(window,command=GameRool)
@@ -111,13 +111,12 @@ def runGame():
 
         text1 = fo1.render("P1",False,BLACK)
         text2 = fo2.render("P2",False,BLUE)
-        scme = fo3.render("게임을 시작합니다.",False,BLACK)
 
         screen.blit(text1,(630,10))  
         screen.blit(text2,(630,65))
-        screen.blit(scme,(15,420))
         pg.draw.rect(screen,BLACK,[610,5,380,120],5)
         pg.draw.rect(screen,WHITE,[5,410,600,130])
+
         #pg.draw.rect(sex,BLACK,pg.Rect(610,430,CELL_SIZE1,CELL_SIZE2), 5)
         "pg.draw.rect(screen,BLACK,[610,430,380,110],5)"
 
@@ -189,26 +188,38 @@ def runGame():
                 if(cam=='모')or(cam=='윷'):
                     if(cam=='모'):
                         yut = pg.image.load('yutmo.png')
+                        scme = fo3.render("MO~~~ CHIP MOVES 5 SPACE")
                         oneMore = 1
                     elif(cam=='윷'):
                         yut = pg.image.load('yutyut.png')
                         oneMore = 1
+                        scme = fo3.render("YUT~~~ CHIP MOVES 4 SPACE")
 
                 elif(cam=='도'):
                     yut = pg.image.load('yutdo.png')
+                    scme = fo3.render("DO~~~ CHIP MOVES 1 SPACE")
+                    screen.blit(scme,(30,450))
 
                 elif(cam=='개'):
                     yut = pg.image.load('yutge.png')
+                    scme = fo3.render("GEA~~~ CHIP MOVES 2 SPACE")
+                    screen.blit(scme,(30,450))
 
                 elif(cam=='걸'):
                     yut = pg.image.load('yutgirl.png')
+                    scme = fo3.render("GIRL~~~ CHIP MOVES 3 SPACE")
+                    screen.blit(scme,(30,450))
 
                 elif(cam=='빽도'):
                     yut = pg.image.load('yutbackdo.png')
+                    scme = fo3.render("BACKDO~~~ CHIP MOVES -1 SPACE")
+                    screen.blit(scme,(30,450))
 
                 elif(cam=='낙'):
                     yut = pg.image.load('yutnone.png')
-        
+                    scme = fo3.render("NAK~~~ CHIP DON'T MOVES")
+                    screen.blit(scme,(30,450))
+
         screen.blit(yut,(720,210))
         if oneMore >= 1:
             screen.blit(onemore,(610,430))       
