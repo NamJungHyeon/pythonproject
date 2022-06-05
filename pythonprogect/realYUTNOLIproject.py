@@ -108,10 +108,10 @@ def runGame():
 
     pain = {0: (510, 269), 1: (514, 211), 2: (510, 150),
         3: (509, 93), 4: (505, 21), 5: (408, 13),
-        6: (316, 13), 7: (223, 18), 8: (218, 18),
+        6: (316, 13), 7: (223, 18), 8: (126, 15),
         9: (24, 25), 10: (24, 95), 11: (25, 154),
         12: (27, 215), 13: (22, 269), 14: (20, 341),
-        15: (127, 248), 16: (223, 345), 17: (314, 346),
+        15: (125, 348), 16: (223, 345), 17: (314, 346),
         18: (407, 346), 19: (497, 333), 20: (567, 340)} #가장자리 루트
 
     fain = {0: (265, 181), 1: (352, 240), 2: (427, 286),
@@ -158,22 +158,19 @@ def runGame():
                     x = event.pos[0]
                     y = event.pos[1]
                     if 698<x<739 and 19<y<58:
-                        redchip1_x = 497
-                        redchip1_y = 333
+                        redchip1_x,redchip1_y = pain[20]
 
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
                     y = event.pos[1]
                     if 761<x<798 and 19<y<58:
-                        redchip2_x = 497
-                        redchip2_y = 333
+                        redchip2_x,redchip2_y = pain[20]
         
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
                     y = event.pos[1]
                     if 821<x<861 and 19<y<58:   
-                        redchip3_x = 497
-                        redchip3_y = 333
+                        redchip3_x,redchip3_y = pain[20]
 
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
@@ -201,13 +198,138 @@ def runGame():
             if redchip1_x < x < redchip1_x+40 and redchip1_y < y < redchip1_y + 40:
                 if(cam=='모')or(cam=='윷'):
                     if(cam=='모'):
-                        print('fuck')
+                        while True:
+                            if redchip1_x == 567 and redchip1_y == 340:
+                                redchip1_x,redchip1_y = pain[4]
+                            elif (redchip1_x,redchip1_y) == pain[0]:
+                                redchip1_x,redchip1_y = pain[1]
+                            elif (redchip1_x,redchip1_y) == pain[1]:
+                                redchip1_x,redchip1_y = pain[2]
+                            elif (redchip1_x,redchip1_y) == pain[2]:
+                                redchip1_x,redchip1_y = pain[3]
+                            elif (redchip1_x,redchip1_y) == pain[3]:
+                                redchip1_x,redchip1_y = pain[4]
+                            elif (redchip1_x,redchip1_y) == pain[4]:
+                                redchip1_x,redchip1_y = pain[5]
+                            elif (redchip1_x,redchip1_y) == pain[5]:
+                                redchip1_x,redchip1_y = pain[6]
+                            elif (redchip1_x,redchip1_y) == pain[6]:
+                                redchip1_x,redchip1_y = pain[7]
+                            elif (redchip1_x,redchip1_y) == pain[7]:
+                                redchip1_x,redchip1_y = pain[8]
+                            elif (redchip1_x,redchip1_y) == pain[8]:
+                                redchip1_x,redchip1_y = pain[9]
+                            elif (redchip1_x,redchip1_y) == pain[9]:
+                                redchip1_x,redchip1_y = pain[10]
+                            elif (redchip1_x,redchip1_y) == pain[10]:
+                                redchip1_x,redchip1_y = pain[11]
+                            elif (redchip1_x,redchip1_y) == pain[11]:
+                                redchip1_x,redchip1_y = pain[12]
+                            elif (redchip1_x,redchip1_y) == pain[12]:
+                                redchip1_x,redchip1_y = pain[13]
+                            elif (redchip1_x,redchip1_y) == pain[13]:
+                                redchip1_x,redchip1_y = pain[14]
+                            elif (redchip1_x,redchip1_y) == pain[14]:
+                                redchip1_x,redchip1_y = pain[15]
+                            elif (redchip1_x,redchip1_y) == pain[15]:
+                                redchip1_x,redchip1_y = pain[16]
+                            elif (redchip1_x,redchip1_y) == pain[16]:
+                                redchip1_x,redchip1_y = pain[17]
+                            elif (redchip1_x,redchip1_y) == pain[17]:
+                                redchip1_x,redchip1_y = pain[18]
+                            elif (redchip1_x,redchip1_y) == pain[18]:
+                                redchip1_x,redchip1_y = pain[19]
+                            cam = ['sibal']
+                            break
                     elif(cam=='윷'):
-                        print('fuck')
+                        while True:
+                            if redchip1_x == 567 and redchip1_y == 340:
+                                redchip1_x,redchip1_y = pain[0]
+                            elif (redchip1_x,redchip1_y) == pain[0]:
+                                redchip1_x,redchip1_y = pain[1]
+                            elif (redchip1_x,redchip1_y) == pain[1]:
+                                redchip1_x,redchip1_y = pain[2]
+                            elif (redchip1_x,redchip1_y) == pain[2]:
+                                redchip1_x,redchip1_y = pain[3]
+                            elif (redchip1_x,redchip1_y) == pain[3]:
+                                redchip1_x,redchip1_y = pain[4]
+                            elif (redchip1_x,redchip1_y) == pain[4]:
+                                redchip1_x,redchip1_y = pain[5]
+                            elif (redchip1_x,redchip1_y) == pain[5]:
+                                redchip1_x,redchip1_y = pain[6]
+                            elif (redchip1_x,redchip1_y) == pain[6]:
+                                redchip1_x,redchip1_y = pain[7]
+                            elif (redchip1_x,redchip1_y) == pain[7]:
+                                redchip1_x,redchip1_y = pain[8]
+                            elif (redchip1_x,redchip1_y) == pain[8]:
+                                redchip1_x,redchip1_y = pain[9]
+                            elif (redchip1_x,redchip1_y) == pain[9]:
+                                redchip1_x,redchip1_y = pain[10]
+                            elif (redchip1_x,redchip1_y) == pain[10]:
+                                redchip1_x,redchip1_y = pain[11]
+                            elif (redchip1_x,redchip1_y) == pain[11]:
+                                redchip1_x,redchip1_y = pain[12]
+                            elif (redchip1_x,redchip1_y) == pain[12]:
+                                redchip1_x,redchip1_y = pain[13]
+                            elif (redchip1_x,redchip1_y) == pain[13]:
+                                redchip1_x,redchip1_y = pain[14]
+                            elif (redchip1_x,redchip1_y) == pain[14]:
+                                redchip1_x,redchip1_y = pain[15]
+                            elif (redchip1_x,redchip1_y) == pain[15]:
+                                redchip1_x,redchip1_y = pain[16]
+                            elif (redchip1_x,redchip1_y) == pain[16]:
+                                redchip1_x,redchip1_y = pain[17]
+                            elif (redchip1_x,redchip1_y) == pain[17]:
+                                redchip1_x,redchip1_y = pain[18]
+                            elif (redchip1_x,redchip1_y) == pain[18]:
+                                redchip1_x,redchip1_y = pain[19]
+                            cam = ['sibal']
+                            break
 
                 elif(cam=='도'):
-                    if redchip1_x == 497 and redchip1_y == 333:
-                        redchip1_x,redchip1_y = pain[0]
+                    while True:
+                        if redchip1_x == 567 and redchip1_y == 340:
+                            redchip1_x,redchip1_y = pain[0]
+                        elif (redchip1_x,redchip1_y) == pain[0]:
+                            redchip1_x,redchip1_y = pain[1]
+                        elif (redchip1_x,redchip1_y) == pain[1]:
+                            redchip1_x,redchip1_y = pain[2]
+                        elif (redchip1_x,redchip1_y) == pain[2]:
+                            redchip1_x,redchip1_y = pain[3]
+                        elif (redchip1_x,redchip1_y) == pain[3]:
+                            redchip1_x,redchip1_y = kain[0]
+                        elif (redchip1_x,redchip1_y) == pain[4]:
+                            redchip1_x,redchip1_y = kain[1]
+                        elif (redchip1_x,redchip1_y) == pain[5]:
+                            redchip1_x,redchip1_y = pain[6]
+                        elif (redchip1_x,redchip1_y) == pain[6]:
+                            redchip1_x,redchip1_y = pain[7]
+                        elif (redchip1_x,redchip1_y) == pain[7]:
+                            redchip1_x,redchip1_y = pain[8]
+                        elif (redchip1_x,redchip1_y) == pain[8]:
+                            redchip1_x,redchip1_y = pain[9]
+                        elif (redchip1_x,redchip1_y) == pain[9]:
+                            redchip1_x,redchip1_y = pain[10]
+                        elif (redchip1_x,redchip1_y) == pain[10]:
+                            redchip1_x,redchip1_y = pain[11]
+                        elif (redchip1_x,redchip1_y) == pain[11]:
+                            redchip1_x,redchip1_y = pain[12]
+                        elif (redchip1_x,redchip1_y) == pain[12]:
+                            redchip1_x,redchip1_y = pain[13]
+                        elif (redchip1_x,redchip1_y) == pain[13]:
+                            redchip1_x,redchip1_y = pain[14]
+                        elif (redchip1_x,redchip1_y) == pain[14]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == pain[15]:
+                            redchip1_x,redchip1_y = pain[16]
+                        elif (redchip1_x,redchip1_y) == pain[16]:
+                            redchip1_x,redchip1_y = pain[17]
+                        elif (redchip1_x,redchip1_y) == pain[17]:
+                            redchip1_x,redchip1_y = pain[18]
+                        elif (redchip1_x,redchip1_y) == pain[18]:
+                            redchip1_x,redchip1_y = pain[19]
+                        cam = ['sibal']
+                        break
 
                 elif(cam=='걸'):
                     print('fuck')
