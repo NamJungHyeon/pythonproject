@@ -1,4 +1,6 @@
+from msilib.schema import ListBox
 from matplotlib import image
+from matplotlib.pyplot import text
 import pygame as pg
 import random as rd
 import sys
@@ -13,7 +15,7 @@ from PIL import ImageTk, Image
 window = Tk()
 window.geometry("1000x500")
 window.title("YUT NOLI")
-fontStyle = tkFont.Font(size=40)
+fontStyle = tkFont.Font(size=20)
 
 def startYut():
     window.destroy()
@@ -22,23 +24,47 @@ def quit():
     sys.exit()
 
 def GameRool():
-    rool = Tk()
-    rool.geometry("450x600")
-    rool.title("YUT NOLI ROOL")
-    lb1 = Label(rool,text="""윷놀이 규칙
+    root = Tk()
+    root.geometry("800x300")
+    scrollbar = Scrollbar(root)
+    scrollbar.pack( side = RIGHT, fill = Y )
 
-    ① 윷이나 모가 나오면 한 번 더 던진다.
+    mylist = Listbox(root, yscrollcommand = scrollbar.set, width="850", height="600",font=fontStyle)
+    #for line in range(100):
+    mylist.insert(END, "윷놀이 규칙")
+    mylist.insert(END, " ")
+    mylist.insert(END, "① 윷이나 모가 나오면 한 번 더 던진다.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "② 앞서가는 말을 잡을 수 있으며, 상대편 말을 잡으면 한 번 더 던진다.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "③ 윷이나 모로 잡을 땐 두 번 던지지 않는다. 단, 윷이나 모가 나왔으므로 한 번 더 던진다.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "④ 윷을 위로 던지지 않고 굴리면 규칙에 어긋나며, 일정한 곳(예：멍석, 돗자리)을 벗어나면 무효이다. (낙)")
+    mylist.insert(END, " ")
+    mylist.insert(END, "⑤ 윷가락 하나에 표시를 하여 이것이 나오면 말밭을 물러나게 하는 등의 재미를 곁들일 수 있다. (빽도)")
+    mylist.insert(END, " ")
+    mylist.insert(END, "⑥ 출발할 때는 출발을 기점으로 시작하며 말이 다시 출발에 오면 도착으로 한다. ")
+    mylist.insert(END, " ")
+    mylist.insert(END, "eng")
+    mylist.insert(END, " ")
+    mylist.insert(END, "① If you throw a Yut and then a 'yut' or 'mo', throw it one more chance.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "② It can catch the other player's leading horse, and if it catches the horse, it is thrown one more chance.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "③ When catching a yut or mo, do not throw twice. However, it is thrown one more time because yut and mo are out.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "④ If you roll the yut without throwing it upward, it is against the rules, and if it deviates from a certain place (a rug, a mat),")
+    mylist.insert(END, "it is invalid and we called Nak.")
+    mylist.insert(END, " ")
+    mylist.insert(END, "⑤ It can be added to the fun, such as marking one yut song and letting the horse back out when it comes out and we called BackDo")
+    mylist.insert(END, " ")
+    mylist.insert(END, "⑥ When starting, the starting point is the (출발), and when the horse comes back to the (출발), it is the arrival point.")
 
-    ② 앞서가는 말을 잡을 수 있으며, 상대편 말을 잡으면 한 번 더 던진다.
+    mylist.pack( side = LEFT, fill = BOTH )
+    scrollbar.config( command = mylist.yview )
 
-    ③ 윷이나 모로 잡을 땐 두 번 던지지 않는다. 단, 윷이나 모가 나왔으므로 한 번 더 던진다.
+    mainloop()
 
-    ④ 말은 두 동, 세 동, 네 동으로 동무하여 함께 갈 수 있다.
-
-    ⑤ 윷을 위로 던지지 않고 굴리면 규칙에 어긋나며, 일정한 곳(예：멍석, 돗자리)을 벗어나면 무효이다.
-
-    ⑥ 윷가락 하나에 표시를 하여 이것이 나오면 말밭을 물러나게 하는 등의 재미를 곁들일 수 있다.""",wraplength=300,font=fontStyle)
-    lb1.pack()  
 
 img =Image.open('TKback.png')
 bg = ImageTk.PhotoImage(img)
@@ -86,13 +112,16 @@ redchip3 = pg.image.load('redchip.png')"""
 yut = pg.image.load('yutnone.png')
 onemore = pg.image.load('onemore.png')
 fo3 = pg.font.SysFont('arial', 27, True, True)
+fo4 = pg.font.SysFont('arial', 50, True, True)
 scme =  fo3.render("GAME START",False,BLACK)  
-scme1 = fo3.render("",False,BLACK)       
+scme1 = fo3.render("",False,BLACK)   
+quit1 = fo4.render("RED TEAM WIN!!!!!!!!!",False,RED)
+quit2 = fo4.render("BLUE TEAM WIN!!!!!!!!",False,BLUE)  
 oneMore = 0
 catch = 0
 cam = ['jeon']
 def runGame():
-    global done, Board, bluechip, redchip #!#!#!# 추가 코드 #!#!#!#
+    global done, Board, bluechip, redchip, redchip1_x, redchip1_y #!#!#!# 추가 코드 #!#!#!#
     Board_x = 0        #!#!#!# 추가 코드 #!#!#!#
     Board_y = 0        #!#!#!# 추가 코드 #!#!#!#
     redchip1_x = 700
@@ -195,7 +224,7 @@ def runGame():
 
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
             x,y = event.pos
-            global catch
+            global catch,gEnd
             catch = 0
             if redchip1_x < x < redchip1_x+40 and redchip1_y < y < redchip1_y + 40:
                 if(cam=='모')or(cam=='윷'):
@@ -1152,6 +1181,11 @@ def runGame():
         else:
             screen.blit(ty,(610,430))
             screen.blit(scme,(30,450))
+
+        if(redchip1_x,redchip1_y)==pain[19]:
+            screen.blit(quit1,(156,156))
+        elif(bluechip1_x,bluechip1_y) == pain[19]:
+            screen.blit(quit2,(156,156))
         pg.display.update()
 
 runGame()    
