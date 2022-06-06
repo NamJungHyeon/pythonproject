@@ -1,3 +1,4 @@
+from matplotlib import image
 import pygame as pg
 import random as rd
 import sys
@@ -77,34 +78,35 @@ Board = pg.image.load('Board.png')
 ty = pg.image.load('throwyut.png')
 LW= pg.image.load('lightwood.png')
 bluechip1 = pg.image.load('bluechip.png')
-bluechip2 = pg.image.load('bluechip.png')
-bluechip3 = pg.image.load('bluechip.png')
+"""bluechip2 = pg.image.load('bluechip.png')
+bluechip3 = pg.image.load('bluechip.png')"""
 redchip1 = pg.image.load('redchip.png')
-redchip2 = pg.image.load('redchip.png')
-redchip3 = pg.image.load('redchip.png')
+"""redchip2 = pg.image.load('redchip.png')
+redchip3 = pg.image.load('redchip.png')"""
 yut = pg.image.load('yutnone.png')
 onemore = pg.image.load('onemore.png')
-fo3 = pg.font.SysFont('arial', 30, True, True)
+fo3 = pg.font.SysFont('arial', 27, True, True)
 scme =  fo3.render("GAME START",False,BLACK)  
 scme1 = fo3.render("",False,BLACK)       
 oneMore = 0
-cam = ['sex']
+catch = 0
+cam = ['jeon']
 def runGame():
     global done, Board, bluechip, redchip #!#!#!# 추가 코드 #!#!#!#
     Board_x = 0        #!#!#!# 추가 코드 #!#!#!#
     Board_y = 0        #!#!#!# 추가 코드 #!#!#!#
     redchip1_x = 700
     redchip1_y = 20
-    redchip2_x = 760
+    """redchip2_x = 760
     redchip2_y = 20
     redchip3_x = 820
-    redchip3_y = 20
+    redchip3_y = 20"""
     bluechip1_x = 700
     bluechip1_y = 70
-    bluechip2_x = 760
+    """bluechip2_x = 760
     bluechip2_y = 70
     bluechip3_x = 820
-    bluechip3_y = 70
+    bluechip3_y = 70"""
 
     pain = {0: (510, 269), 1: (514, 211), 2: (510, 150),
         3: (509, 93), 4: (505, 21), 5: (408, 13),
@@ -112,20 +114,19 @@ def runGame():
         9: (24, 25), 10: (24, 95), 11: (25, 154),
         12: (27, 215), 13: (22, 269), 14: (20, 341),
         15: (125, 348), 16: (223, 345), 17: (314, 346),
-        18: (407, 346), 19: (497, 333), 20: (567, 340)} #가장자리 루트
+        18: (407, 346), 19: (930, 20), 20:(567,340)} #가장자리 루트
 
     fain = {0: (265, 181), 1: (352, 240), 2: (427, 286),
-        3: (497, 333),4: {567, 340}} #최단루트
+        3: (930, 20)} #최단루트
 
     vain = {0: (24, 25), 1: (117, 82), 2: (193, 125),
         3: (265, 181), 4: (352, 240), 5: (427, 286),
-        6: (497, 333), 7: (567, 340)} #두번째 갈림길 루트
+        6: (930, 20)} #두번째 갈림길 루트
 
     kain = {0: (505, 21), 1: (421, 80), 2: (344, 131),
         3: (265, 181), 4: (185, 238), 5: (111, 286),
         6: (20, 341), 7: (127, 248), 8: (223, 345),
-        9: (314, 346), 10: (407, 346), 11: (497, 333),
-        12: (567, 340)} #첫번째 갈림길 루트
+        9: (314, 346), 10: (407, 346), 11: (930, 20)} #첫번째 갈림길 루트
     while not done:
         screen.blit(BP,(0,0))
         clock.tick(10)
@@ -145,11 +146,11 @@ def runGame():
 
         screen.blit(Board, (Board_x, Board_y))  #!#!#!# 추가 코드 #!#!#!#
         screen.blit(redchip1, (redchip1_x, redchip1_y))
-        screen.blit(redchip2, (redchip2_x, redchip2_y))
-        screen.blit(redchip3, (redchip3_x, redchip3_y))
+        """screen.blit(redchip2, (redchip2_x, redchip2_y))
+        screen.blit(redchip3, (redchip3_x, redchip3_y))"""
         screen.blit(bluechip1,(bluechip1_x, bluechip1_y))
-        screen.blit(bluechip2,(bluechip2_x, bluechip2_y))
-        screen.blit(bluechip3,(bluechip3_x, bluechip3_y))
+        """screen.blit(bluechip2,(bluechip2_x, bluechip2_y))
+        screen.blit(bluechip3,(bluechip3_x, bluechip3_y))"""
         screen.blit(ty,(610,430))
         screen.blit(LW,(610,125))
         
@@ -160,7 +161,7 @@ def runGame():
                     if 698<x<739 and 19<y<58:
                         redchip1_x,redchip1_y = pain[20]
 
-        if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
+        """if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
                     y = event.pos[1]
                     if 761<x<798 and 19<y<58:
@@ -170,16 +171,15 @@ def runGame():
                     x = event.pos[0]
                     y = event.pos[1]
                     if 821<x<861 and 19<y<58:   
-                        redchip3_x,redchip3_y = pain[20]
+                        redchip3_x,redchip3_y = pain[20]"""
 
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
                     y = event.pos[1]
                     if 698<x<739 and 73<y<109:
-                        bluechip1_x = 497
-                        bluechip1_y = 333
+                        bluechip1_x,bluechip1_y = pain[20]
 
-        if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
+        """if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                     x = event.pos[0]
                     y = event.pos[1]
                     if 761<x<798 and 73<y<109:
@@ -191,99 +191,157 @@ def runGame():
             y = event.pos[1]
             if 821<x<861 and 73<y<109:
                 bluechip3_x = 497
-                bluechip3_y = 333
+                bluechip3_y = 333"""
 
         if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
             x,y = event.pos
+            global catch
+            catch = 0
             if redchip1_x < x < redchip1_x+40 and redchip1_y < y < redchip1_y + 40:
                 if(cam=='모')or(cam=='윷'):
                     if(cam=='모'):
-                        while True:
-                            if redchip1_x == 567 and redchip1_y == 340:
-                                redchip1_x,redchip1_y = pain[4]
+                        while True:	
+                            if redchip1_x == 567 and redchip1_y == 340: #갈림길 진입
+                                redchip1_x,redchip1_y = kain[0]
                             elif (redchip1_x,redchip1_y) == pain[0]:
-                                redchip1_x,redchip1_y = pain[1]
-                            elif (redchip1_x,redchip1_y) == pain[1]:
-                                redchip1_x,redchip1_y = pain[2]
-                            elif (redchip1_x,redchip1_y) == pain[2]:
-                                redchip1_x,redchip1_y = pain[3]
-                            elif (redchip1_x,redchip1_y) == pain[3]:
-                                redchip1_x,redchip1_y = pain[4]
-                            elif (redchip1_x,redchip1_y) == pain[4]:
                                 redchip1_x,redchip1_y = pain[5]
-                            elif (redchip1_x,redchip1_y) == pain[5]:
+                            elif (redchip1_x,redchip1_y) == pain[1]:
                                 redchip1_x,redchip1_y = pain[6]
-                            elif (redchip1_x,redchip1_y) == pain[6]:
+                            elif (redchip1_x,redchip1_y) == pain[2]: 
                                 redchip1_x,redchip1_y = pain[7]
-                            elif (redchip1_x,redchip1_y) == pain[7]:
+                            elif (redchip1_x,redchip1_y) == pain[3]:
                                 redchip1_x,redchip1_y = pain[8]
-                            elif (redchip1_x,redchip1_y) == pain[8]:
-                                redchip1_x,redchip1_y = pain[9]
-                            elif (redchip1_x,redchip1_y) == pain[9]:
+                            elif (redchip1_x,redchip1_y) == pain[4]: #갈림길 출발
+                                redchip1_x,redchip1_y = kain[5]
+                            elif (redchip1_x,redchip1_y) == pain[5]:
                                 redchip1_x,redchip1_y = pain[10]
-                            elif (redchip1_x,redchip1_y) == pain[10]:
+                            elif (redchip1_x,redchip1_y) == pain[6]:
                                 redchip1_x,redchip1_y = pain[11]
-                            elif (redchip1_x,redchip1_y) == pain[11]:
+                            elif (redchip1_x,redchip1_y) == pain[7]: 
                                 redchip1_x,redchip1_y = pain[12]
-                            elif (redchip1_x,redchip1_y) == pain[12]:
+                            elif (redchip1_x,redchip1_y) == pain[8]:
                                 redchip1_x,redchip1_y = pain[13]
-                            elif (redchip1_x,redchip1_y) == pain[13]:
-                                redchip1_x,redchip1_y = pain[14]
-                            elif (redchip1_x,redchip1_y) == pain[14]:
+                            elif (redchip1_x,redchip1_y) == pain[9]: #두번쨰 갈림길 출발
+                                redchip1_x,redchip1_y = vain[5]
+                            elif (redchip1_x,redchip1_y) == pain[10]:
                                 redchip1_x,redchip1_y = pain[15]
-                            elif (redchip1_x,redchip1_y) == pain[15]:
+                            elif (redchip1_x,redchip1_y) == pain[11]:
                                 redchip1_x,redchip1_y = pain[16]
-                            elif (redchip1_x,redchip1_y) == pain[16]:
+                            elif (redchip1_x,redchip1_y) == pain[12]:
                                 redchip1_x,redchip1_y = pain[17]
-                            elif (redchip1_x,redchip1_y) == pain[17]:
+                            elif (redchip1_x,redchip1_y) == pain[13]:
                                 redchip1_x,redchip1_y = pain[18]
+                            elif (redchip1_x,redchip1_y) == pain[14]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[15]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[16]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[17]:
+                                redchip1_x,redchip1_y = pain[19]
                             elif (redchip1_x,redchip1_y) == pain[18]:
                                 redchip1_x,redchip1_y = pain[19]
-                            cam = ['sibal']
+                            elif (redchip1_x,redchip1_y) == kain[1]:
+                                redchip1_x,redchip1_y = pain[14]
+                            elif (redchip1_x,redchip1_y) == kain[2]:
+                                redchip1_x,redchip1_y = pain[15]
+                            elif (redchip1_x,redchip1_y) == kain[3]: #최단 루트 출발
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == kain[4]:
+                                redchip1_x,redchip1_y = pain[17]
+                            elif (redchip1_x,redchip1_y) == kain[5]:
+                                redchip1_x,redchip1_y = pain[18]
+                            elif (redchip1_x,redchip1_y) == fain[1]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == fain[2]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[1]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[2]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[3]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[4]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[5]:
+                                redchip1_x,redchip1_y = pain[19]
+                            if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                                bluechip1_x,bluechip1_y = (700,70)
+                                scme2 = fo3.render("CATCH!! AND THROW YUT ONEMORE",False,BLACK)
+                                catch=1
+                            cam = ['jong']
                             break
                     elif(cam=='윷'):
                         while True:
-                            if redchip1_x == 567 and redchip1_y == 340:
-                                redchip1_x,redchip1_y = pain[0]
-                            elif (redchip1_x,redchip1_y) == pain[0]:
-                                redchip1_x,redchip1_y = pain[1]
-                            elif (redchip1_x,redchip1_y) == pain[1]:
-                                redchip1_x,redchip1_y = pain[2]
-                            elif (redchip1_x,redchip1_y) == pain[2]:
+                            if redchip1_x == 567 and redchip1_y == 340: #갈림길 진입
                                 redchip1_x,redchip1_y = pain[3]
-                            elif (redchip1_x,redchip1_y) == pain[3]:
-                                redchip1_x,redchip1_y = pain[4]
-                            elif (redchip1_x,redchip1_y) == pain[4]:
+                            elif (redchip1_x,redchip1_y) == pain[0]:
+                                redchip1_x,redchip1_y = kain[0]
+                            elif (redchip1_x,redchip1_y) == pain[1]:
                                 redchip1_x,redchip1_y = pain[5]
-                            elif (redchip1_x,redchip1_y) == pain[5]:
+                            elif (redchip1_x,redchip1_y) == pain[2]: 
                                 redchip1_x,redchip1_y = pain[6]
-                            elif (redchip1_x,redchip1_y) == pain[6]:
+                            elif (redchip1_x,redchip1_y) == pain[3]:
                                 redchip1_x,redchip1_y = pain[7]
-                            elif (redchip1_x,redchip1_y) == pain[7]:
-                                redchip1_x,redchip1_y = pain[8]
-                            elif (redchip1_x,redchip1_y) == pain[8]:
-                                redchip1_x,redchip1_y = pain[9]
-                            elif (redchip1_x,redchip1_y) == pain[9]:
+                            elif (redchip1_x,redchip1_y) == pain[4]: #갈림길 출발
+                                redchip1_x,redchip1_y = kain[4]
+                            elif (redchip1_x,redchip1_y) == pain[5]:
+                                redchip1_x,redchip1_y = vain[0]
+                            elif (redchip1_x,redchip1_y) == pain[6]:
                                 redchip1_x,redchip1_y = pain[10]
-                            elif (redchip1_x,redchip1_y) == pain[10]:
+                            elif (redchip1_x,redchip1_y) == pain[7]: 
                                 redchip1_x,redchip1_y = pain[11]
-                            elif (redchip1_x,redchip1_y) == pain[11]:
+                            elif (redchip1_x,redchip1_y) == pain[8]:
                                 redchip1_x,redchip1_y = pain[12]
-                            elif (redchip1_x,redchip1_y) == pain[12]:
-                                redchip1_x,redchip1_y = pain[13]
-                            elif (redchip1_x,redchip1_y) == pain[13]:
-                                redchip1_x,redchip1_y = pain[14]
-                            elif (redchip1_x,redchip1_y) == pain[14]:
+                            elif (redchip1_x,redchip1_y) == pain[9]:
+                                redchip1_x,redchip1_y = vain[4]
+                            elif (redchip1_x,redchip1_y) == pain[10]:
                                 redchip1_x,redchip1_y = pain[15]
-                            elif (redchip1_x,redchip1_y) == pain[15]:
+                            elif (redchip1_x,redchip1_y) == pain[11]:
                                 redchip1_x,redchip1_y = pain[16]
-                            elif (redchip1_x,redchip1_y) == pain[16]:
+                            elif (redchip1_x,redchip1_y) == pain[12]:
                                 redchip1_x,redchip1_y = pain[17]
-                            elif (redchip1_x,redchip1_y) == pain[17]:
+                            elif (redchip1_x,redchip1_y) == pain[13]:
                                 redchip1_x,redchip1_y = pain[18]
+                            elif (redchip1_x,redchip1_y) == pain[14]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[15]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[16]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == pain[17]:
+                                redchip1_x,redchip1_y = pain[19]
                             elif (redchip1_x,redchip1_y) == pain[18]:
                                 redchip1_x,redchip1_y = pain[19]
-                            cam = ['sibal']
+                            elif (redchip1_x,redchip1_y) == kain[1]:
+                                redchip1_x,redchip1_y = kain[5]
+                            elif (redchip1_x,redchip1_y) == kain[2]:
+                                redchip1_x,redchip1_y = pain[14]
+                            elif (redchip1_x,redchip1_y) == kain[3]: #최단 루트 출발
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == kain[4]:
+                                redchip1_x,redchip1_y = pain[16]
+                            elif (redchip1_x,redchip1_y) == kain[5]:
+                                redchip1_x,redchip1_y = pain[17]
+                            elif (redchip1_x,redchip1_y) == fain[1]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == fain[2]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[1]:
+                                redchip1_x,redchip1_y = vain[5]
+                            elif (redchip1_x,redchip1_y) == vain[2]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[3]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[4]:
+                                redchip1_x,redchip1_y = pain[19]
+                            elif (redchip1_x,redchip1_y) == vain[5]:
+                                redchip1_x,redchip1_y = pain[19]
+                            if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                                bluechip1_x,bluechip1_y = (700,70)
+                                scme2 = fo3.render("CATCH!! AND THROW YUT ONEMORE",False,BLACK)
+                                catch=1
+                            cam = ['ro']
                             break
 
                 elif(cam=='도'):
@@ -298,8 +356,10 @@ def runGame():
                             redchip1_x,redchip1_y = pain[3]
                         elif (redchip1_x,redchip1_y) == pain[3]:
                             redchip1_x,redchip1_y = kain[0]
+                            #redchip1_x,redchip1_y = pain[4]
                         elif (redchip1_x,redchip1_y) == pain[4]:
                             redchip1_x,redchip1_y = kain[1]
+                            #redchip1_x,redchip1_y = pain[5]
                         elif (redchip1_x,redchip1_y) == pain[5]:
                             redchip1_x,redchip1_y = pain[6]
                         elif (redchip1_x,redchip1_y) == pain[6]:
@@ -307,9 +367,9 @@ def runGame():
                         elif (redchip1_x,redchip1_y) == pain[7]:
                             redchip1_x,redchip1_y = pain[8]
                         elif (redchip1_x,redchip1_y) == pain[8]:
-                            redchip1_x,redchip1_y = pain[9]
+                            redchip1_x,redchip1_y = vain[0]
                         elif (redchip1_x,redchip1_y) == pain[9]:
-                            redchip1_x,redchip1_y = pain[10]
+                            redchip1_x,redchip1_y = vain[1]
                         elif (redchip1_x,redchip1_y) == pain[10]:
                             redchip1_x,redchip1_y = pain[11]
                         elif (redchip1_x,redchip1_y) == pain[11]:
@@ -328,17 +388,714 @@ def runGame():
                             redchip1_x,redchip1_y = pain[18]
                         elif (redchip1_x,redchip1_y) == pain[18]:
                             redchip1_x,redchip1_y = pain[19]
-                        cam = ['sibal']
+                        elif (redchip1_x,redchip1_y) == kain[1]:
+                            redchip1_x,redchip1_y = kain[2]
+                        elif (redchip1_x,redchip1_y) == kain[2]:
+                            redchip1_x,redchip1_y = fain[0]
+                        elif (redchip1_x,redchip1_y) == kain[3]:
+                            redchip1_x,redchip1_y = fain[1]
+                        elif (redchip1_x,redchip1_y) == kain[4]:
+                            redchip1_x,redchip1_y = kain[5]
+                        elif (redchip1_x,redchip1_y) == kain[5]:
+                            redchip1_x,redchip1_y = kain[6]
+                        elif (redchip1_x,redchip1_y) == kain[6]:
+                            redchip1_x,redchip1_y = kain[7]
+                        elif (redchip1_x,redchip1_y) == kain[7]:
+                            redchip1_x,redchip1_y = kain[8]
+                        elif (redchip1_x,redchip1_y) == kain[8]:
+                            redchip1_x,redchip1_y = kain[9]
+                        elif (redchip1_x,redchip1_y) == kain[9]:
+                            redchip1_x,redchip1_y = kain[10]
+                        elif(redchip1_x,redchip1_y) == kain[10]:
+                            redchip1_x,redchip1_y = kain[11]
+                        elif(redchip1_x,redchip1_y) == vain[1]:
+                            redchip1_x,redchip1_y = vain[2]
+                        elif(redchip1_x,redchip1_y) == vain[2]:
+                            redchip1_x,redchip1_y = vain[3]
+                        elif(redchip1_x,redchip1_y) == vain[3]:
+                            redchip1_x,redchip1_y = vain[4]
+                        elif(redchip1_x,redchip1_y) == vain[4]:
+                            redchip1_x,redchip1_y = vain[5]
+                        elif(redchip1_x,redchip1_y) == vain[5]:
+                            redchip1_x,redchip1_y = vain[6]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            bluechip1_x,bluechip1_y = (700,70)
+                            catch=1
+                        cam = ['professor']
+                        break
+                
+                elif(cam=='개'):
+                    while True:
+                        if redchip1_x == 567 and redchip1_y == 340:
+                            redchip1_x,redchip1_y = pain[1]
+                        elif (redchip1_x,redchip1_y) == pain[0]:
+                            redchip1_x,redchip1_y = pain[2]
+                        elif (redchip1_x,redchip1_y) == pain[1]:
+                            redchip1_x,redchip1_y = pain[3]
+                        elif (redchip1_x,redchip1_y) == pain[2]: #갈림길 진입
+                            redchip1_x,redchip1_y = kain[0]
+                        elif (redchip1_x,redchip1_y) == pain[3]:
+                            redchip1_x,redchip1_y = pain[5]
+                        elif (redchip1_x,redchip1_y) == pain[4]: #갈림길 출발
+                            redchip1_x,redchip1_y = kain[2]
+                        elif (redchip1_x,redchip1_y) == pain[5]:
+                            redchip1_x,redchip1_y = pain[7]
+                        elif (redchip1_x,redchip1_y) == pain[6]:
+                            redchip1_x,redchip1_y = pain[8]
+                        elif (redchip1_x,redchip1_y) == pain[7]: #두번째 갈림길 진입
+                            redchip1_x,redchip1_y = vain[0]
+                        elif (redchip1_x,redchip1_y) == pain[8]:
+                            redchip1_x,redchip1_y = pain[10]
+                        elif (redchip1_x,redchip1_y) == pain[9]: #두번쨰 갈림길 출발
+                            redchip1_x,redchip1_y = vain[2]
+                        elif (redchip1_x,redchip1_y) == pain[10]:
+                            redchip1_x,redchip1_y = pain[12]
+                        elif (redchip1_x,redchip1_y) == pain[11]:
+                            redchip1_x,redchip1_y = pain[13]
+                        elif (redchip1_x,redchip1_y) == pain[12]:
+                            redchip1_x,redchip1_y = pain[14]
+                        elif (redchip1_x,redchip1_y) == pain[13]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == pain[14]:
+                            redchip1_x,redchip1_y = pain[16]
+                        elif (redchip1_x,redchip1_y) == pain[15]:
+                            redchip1_x,redchip1_y = pain[17]
+                        elif (redchip1_x,redchip1_y) == pain[16]:
+                            redchip1_x,redchip1_y = pain[18]
+                        elif (redchip1_x,redchip1_y) == pain[17]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == pain[18]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == kain[1]: #최단 루트 진입
+                            redchip1_x,redchip1_y = fain[0]
+                        elif (redchip1_x,redchip1_y) == kain[2]:
+                            redchip1_x,redchip1_y = kain[4]
+                        elif (redchip1_x,redchip1_y) == kain[3]: #최단 루트 출발
+                            redchip1_x,redchip1_y = fain[2]
+                        elif (redchip1_x,redchip1_y) == kain[4]:
+                            redchip1_x,redchip1_y = pain[14]
+                        elif (redchip1_x,redchip1_y) == kain[5]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == fain[1]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == fain[2]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == vain[1]:
+                            redchip1_x,redchip1_y = vain[3]
+                        elif (redchip1_x,redchip1_y) == vain[2]:
+                            redchip1_x,redchip1_y = vain[4]
+                        elif (redchip1_x,redchip1_y) == vain[3]:
+                            redchip1_x,redchip1_y = vain[5]
+                        elif (redchip1_x,redchip1_y) == vain[4]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == vain[5]:
+                            redchip1_x,redchip1_y = pain[19]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            bluechip1_x,bluechip1_y = (700,70)
+                            catch=1
+                        cam = ['respect']
                         break
 
                 elif(cam=='걸'):
-                    print('fuck')
+                    while True:
+                        if redchip1_x == 567 and redchip1_y == 340:
+                            redchip1_x,redchip1_y = pain[2]
+                        elif (redchip1_x,redchip1_y) == pain[0]:
+                            redchip1_x,redchip1_y = pain[3]
+                        elif (redchip1_x,redchip1_y) == pain[1]: #갈림길 진입
+                            redchip1_x,redchip1_y = kain[0]
+                        elif (redchip1_x,redchip1_y) == pain[2]: 
+                            redchip1_x,redchip1_y = pain[5]
+                        elif (redchip1_x,redchip1_y) == pain[3]:
+                            redchip1_x,redchip1_y = pain[6]
+                        elif (redchip1_x,redchip1_y) == pain[4]: #갈림길 출발 #최단 루트 진입
+                            redchip1_x,redchip1_y = kain[3]
+                        elif (redchip1_x,redchip1_y) == pain[5]:
+                            redchip1_x,redchip1_y = pain[8]
+                        elif (redchip1_x,redchip1_y) == pain[6]: #두번째 갈림길 진입
+                            redchip1_x,redchip1_y = vain[0]
+                        elif (redchip1_x,redchip1_y) == pain[7]: 
+                            redchip1_x,redchip1_y = pain[10]
+                        elif (redchip1_x,redchip1_y) == pain[8]:
+                            redchip1_x,redchip1_y = pain[11]
+                        elif (redchip1_x,redchip1_y) == pain[9]: #두번쨰 갈림길 출발
+                            redchip1_x,redchip1_y = vain[3]
+                        elif (redchip1_x,redchip1_y) == pain[10]:
+                            redchip1_x,redchip1_y = pain[13]
+                        elif (redchip1_x,redchip1_y) == pain[11]:
+                            redchip1_x,redchip1_y = pain[14]
+                        elif (redchip1_x,redchip1_y) == pain[12]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == pain[13]:
+                            redchip1_x,redchip1_y = pain[16]
+                        elif (redchip1_x,redchip1_y) == pain[14]:
+                            redchip1_x,redchip1_y = pain[17]
+                        elif (redchip1_x,redchip1_y) == pain[15]:
+                            redchip1_x,redchip1_y = pain[18]
+                        elif (redchip1_x,redchip1_y) == pain[16]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == pain[17]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == pain[18]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == kain[1]:
+                            redchip1_x,redchip1_y = kain[4]
+                        elif (redchip1_x,redchip1_y) == kain[2]:
+                            redchip1_x,redchip1_y = kain[5]
+                        elif (redchip1_x,redchip1_y) == kain[3]: #최단 루트 출발
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == kain[4]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == kain[5]:
+                            redchip1_x,redchip1_y = pain[16]
+                        elif (redchip1_x,redchip1_y) == fain[1]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == fain[2]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == vain[1]:
+                            redchip1_x,redchip1_y = vain[4]
+                        elif (redchip1_x,redchip1_y) == vain[2]:
+                            redchip1_x,redchip1_y = vain[5]
+                        elif (redchip1_x,redchip1_y) == vain[3]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == vain[4]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == vain[5]:
+                            redchip1_x,redchip1_y = pain[19]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            bluechip1_x,bluechip1_y = (700,70)
+                            catch=1
+                        cam = ['this']
+                        break
 
                 elif(cam=='빽도'):
-                    print('fuck')
-
+                    while True:
+                        if redchip1_x == 567 and redchip1_y == 340:
+                            redchip1_x,redchip1_y = (700,20)
+                        elif (redchip1_x,redchip1_y) == pain[0]:
+                            redchip1_x,redchip1_y = pain[19]
+                        elif (redchip1_x,redchip1_y) == pain[1]: 
+                            redchip1_x,redchip1_y = pain[0]
+                        elif (redchip1_x,redchip1_y) == pain[2]: 
+                            redchip1_x,redchip1_y = pain[1]
+                        elif (redchip1_x,redchip1_y) == pain[3]:
+                            redchip1_x,redchip1_y = pain[2]
+                        elif (redchip1_x,redchip1_y) == pain[4]: 
+                            redchip1_x,redchip1_y = pain[3]
+                        elif (redchip1_x,redchip1_y) == pain[5]: #갈림길 진입
+                            redchip1_x,redchip1_y = kain[0]
+                        elif (redchip1_x,redchip1_y) == pain[6]: 
+                            redchip1_x,redchip1_y = pain[5]
+                        elif (redchip1_x,redchip1_y) == pain[7]: 
+                            redchip1_x,redchip1_y = pain[6]
+                        elif (redchip1_x,redchip1_y) == pain[8]: 
+                            redchip1_x,redchip1_y = pain[7]
+                        elif (redchip1_x,redchip1_y) == pain[9]: 
+                            redchip1_x,redchip1_y = pain[8]
+                        elif (redchip1_x,redchip1_y) == pain[10]: #두번째 갈림길 진입
+                            redchip1_x,redchip1_y = vain[0]
+                        elif (redchip1_x,redchip1_y) == pain[11]:
+                            redchip1_x,redchip1_y = pain[10]
+                        elif (redchip1_x,redchip1_y) == pain[12]:
+                            redchip1_x,redchip1_y = pain[11]
+                        elif (redchip1_x,redchip1_y) == pain[13]:
+                            redchip1_x,redchip1_y = pain[12]
+                        elif (redchip1_x,redchip1_y) == pain[14]:
+                            redchip1_x,redchip1_y = pain[13]
+                        elif (redchip1_x,redchip1_y) == pain[15]:
+                            redchip1_x,redchip1_y = pain[14]
+                        elif (redchip1_x,redchip1_y) == pain[16]:
+                            redchip1_x,redchip1_y = pain[15]
+                        elif (redchip1_x,redchip1_y) == pain[17]:
+                            redchip1_x,redchip1_y = pain[16]
+                        elif (redchip1_x,redchip1_y) == pain[18]:
+                            redchip1_x,redchip1_y = pain[17]
+                        elif (redchip1_x,redchip1_y) == kain[1]:
+                            redchip1_x,redchip1_y = pain[4]
+                        elif (redchip1_x,redchip1_y) == kain[2]:
+                            redchip1_x,redchip1_y = kain[1]
+                        elif (redchip1_x,redchip1_y) == kain[3]: 
+                            redchip1_x,redchip1_y = kain[2]
+                        elif (redchip1_x,redchip1_y) == kain[4]: #최단 루트 진입
+                            redchip1_x,redchip1_y = fain[0]
+                        elif (redchip1_x,redchip1_y) == kain[5]:
+                            redchip1_x,redchip1_y = kain[4]
+                        elif (redchip1_x,redchip1_y) == fain[1]:
+                            redchip1_x,redchip1_y = kain[3]
+                        elif (redchip1_x,redchip1_y) == fain[2]:
+                            redchip1_x,redchip1_y = fain[2]
+                        elif (redchip1_x,redchip1_y) == vain[1]:
+                            redchip1_x,redchip1_y = pain[9]
+                        elif (redchip1_x,redchip1_y) == vain[2]:
+                            redchip1_x,redchip1_y = vain[1]
+                        elif (redchip1_x,redchip1_y) == vain[3]:
+                            redchip1_x,redchip1_y = vain[2]
+                        elif (redchip1_x,redchip1_y) == vain[4]:
+                            redchip1_x,redchip1_y = vain[3]
+                        elif (redchip1_x,redchip1_y) == vain[5]:
+                            redchip1_x,redchip1_y = vain[4]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            bluechip1_x,bluechip1_y = (700,70)
+                            catch=1
+                        cam = ['is']
+                        break
                 elif(cam=='낙'):
-                    print('fuck')
+                    if(redchip1_x,redchip1_y)==pain[20]:
+                        redchip1_x,redchip1_y = (700,20)
+                    print('다음 기회에~~')
+        
+        if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
+            x,y = event.pos
+            if bluechip1_x < x < bluechip1_x+40 and bluechip1_y < y < bluechip1_y + 40:
+                if(cam=='모')or(cam=='윷'):
+                    if(cam=='모'):
+                        while True:	
+                            if bluechip1_x == 567 and bluechip1_y == 340: #갈림길 진입
+                                bluechip1_x,bluechip1_y = kain[0]
+                            elif (bluechip1_x,bluechip1_y) == pain[0]:
+                                bluechip1_x,bluechip1_y = pain[5]
+                            elif (bluechip1_x,bluechip1_y) == pain[1]:
+                                bluechip1_x,bluechip1_y = pain[6]
+                            elif (bluechip1_x,bluechip1_y) == pain[2]: 
+                                bluechip1_x,bluechip1_y = pain[7]
+                            elif (bluechip1_x,bluechip1_y) == pain[3]:
+                                bluechip1_x,bluechip1_y = pain[8]
+                            elif (bluechip1_x,bluechip1_y) == pain[4]: #갈림길 출발
+                                bluechip1_x,bluechip1_y = kain[5]
+                            elif (bluechip1_x,bluechip1_y) == pain[5]:
+                                bluechip1_x,bluechip1_y = pain[10]
+                            elif (bluechip1_x,bluechip1_y) == pain[6]:
+                                bluechip1_x,bluechip1_y = pain[11]
+                            elif (bluechip1_x,bluechip1_y) == pain[7]: 
+                                bluechip1_x,bluechip1_y = pain[12]
+                            elif (bluechip1_x,bluechip1_y) == pain[8]:
+                                bluechip1_x,bluechip1_y = pain[13]
+                            elif (bluechip1_x,bluechip1_y) == pain[9]: #두번쨰 갈림길 출발
+                                bluechip1_x,bluechip1_y = vain[5]
+                            elif (bluechip1_x,bluechip1_y) == pain[10]:
+                                bluechip1_x,bluechip1_y = pain[15]
+                            elif (bluechip1_x,bluechip1_y) == pain[11]:
+                                bluechip1_x,bluechip1_y = pain[16]
+                            elif (bluechip1_x,bluechip1_y) == pain[12]:
+                                bluechip1_x,bluechip1_y = pain[17]
+                            elif (bluechip1_x,bluechip1_y) == pain[13]:
+                                bluechip1_x,bluechip1_y = pain[18]
+                            elif (bluechip1_x,bluechip1_y) == pain[14]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[15]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[16]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[17]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[18]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == kain[1]:
+                                bluechip1_x,bluechip1_y = pain[14]
+                            elif (bluechip1_x,bluechip1_y) == kain[2]:
+                                bluechip1_x,bluechip1_y = pain[15]
+                            elif (bluechip1_x,bluechip1_y) == kain[3]: #최단 루트 출발
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == kain[4]:
+                                bluechip1_x,bluechip1_y = pain[17]
+                            elif (bluechip1_x,bluechip1_y) == kain[5]:
+                                bluechip1_x,bluechip1_y = pain[18]
+                            elif (bluechip1_x,bluechip1_y) == fain[1]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == fain[2]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[1]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[2]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[3]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[4]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[5]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                                redchip1_x,redchip1_y = (700,20)
+                                scme2 = fo3.render("CATCH!! AND THROW YUT ONEMORE",False,BLACK)
+                                catch=1
+                            cam = ['scam']
+                            break
+                    elif(cam=='윷'):
+                        while True:
+                            if bluechip1_x == 567 and bluechip1_y == 340: #갈림길 진입
+                                bluechip1_x,bluechip1_y = pain[3]
+                            elif (bluechip1_x,bluechip1_y) == pain[0]:
+                                bluechip1_x,bluechip1_y = kain[0]
+                            elif (bluechip1_x,bluechip1_y) == pain[1]:
+                                bluechip1_x,bluechip1_y = pain[5]
+                            elif (bluechip1_x,bluechip1_y) == pain[2]: 
+                                bluechip1_x,bluechip1_y = pain[6]
+                            elif (bluechip1_x,bluechip1_y) == pain[3]:
+                                bluechip1_x,bluechip1_y = pain[7]
+                            elif (bluechip1_x,bluechip1_y) == pain[4]: #갈림길 출발
+                                bluechip1_x,bluechip1_y = kain[4]
+                            elif (bluechip1_x,bluechip1_y) == pain[5]:
+                                bluechip1_x,bluechip1_y = vain[0]
+                            elif (bluechip1_x,bluechip1_y) == pain[6]:
+                                bluechip1_x,bluechip1_y = pain[10]
+                            elif (bluechip1_x,bluechip1_y) == pain[7]: 
+                                bluechip1_x,bluechip1_y = pain[11]
+                            elif (bluechip1_x,bluechip1_y) == pain[8]:
+                                bluechip1_x,bluechip1_y = pain[12]
+                            elif (bluechip1_x,bluechip1_y) == pain[9]:
+                                bluechip1_x,bluechip1_y = vain[4]
+                            elif (bluechip1_x,bluechip1_y) == pain[10]:
+                                bluechip1_x,bluechip1_y = pain[15]
+                            elif (bluechip1_x,bluechip1_y) == pain[11]:
+                                bluechip1_x,bluechip1_y = pain[16]
+                            elif (bluechip1_x,bluechip1_y) == pain[12]:
+                                bluechip1_x,bluechip1_y = pain[17]
+                            elif (bluechip1_x,bluechip1_y) == pain[13]:
+                                bluechip1_x,bluechip1_y = pain[18]
+                            elif (bluechip1_x,bluechip1_y) == pain[14]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[15]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[16]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[17]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == pain[18]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == kain[1]:
+                                bluechip1_x,bluechip1_y = kain[5]
+                            elif (bluechip1_x,bluechip1_y) == kain[2]:
+                                bluechip1_x,bluechip1_y = pain[14]
+                            elif (bluechip1_x,bluechip1_y) == kain[3]: #최단 루트 출발
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == kain[4]:
+                                bluechip1_x,bluechip1_y = pain[16]
+                            elif (bluechip1_x,bluechip1_y) == kain[5]:
+                                bluechip1_x,bluechip1_y = pain[17]
+                            elif (bluechip1_x,bluechip1_y) == fain[1]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == fain[2]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[1]:
+                                bluechip1_x,bluechip1_y = vain[5]
+                            elif (bluechip1_x,bluechip1_y) == vain[2]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[3]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[4]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            elif (bluechip1_x,bluechip1_y) == vain[5]:
+                                bluechip1_x,bluechip1_y = pain[19]
+                            if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                                redchip1_x,redchip1_y = (700,20)
+                                scme2 = fo3.render("CATCH!! AND THROW YUT ONEMORE",False,BLACK)
+                                catch=1
+                            cam = ['wwww']
+                            break
+
+                elif(cam=='도'):
+                    while True:
+                        if bluechip1_x == 567 and bluechip1_y == 340:
+                            bluechip1_x,bluechip1_y = pain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[0]:
+                            bluechip1_x,bluechip1_y = pain[1]
+                        elif (bluechip1_x,bluechip1_y) == pain[1]:
+                            bluechip1_x,bluechip1_y = pain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[2]:
+                            bluechip1_x,bluechip1_y = pain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[3]:
+                            bluechip1_x,bluechip1_y = kain[0]
+                            #bluechip1_x,bluechip1_y = pain[4]
+                        elif (bluechip1_x,bluechip1_y) == pain[4]:
+                            bluechip1_x,bluechip1_y = kain[1]
+                            #bluechip1_x,bluechip1_y = pain[5]
+                        elif (bluechip1_x,bluechip1_y) == pain[5]:
+                            bluechip1_x,bluechip1_y = pain[6]
+                        elif (bluechip1_x,bluechip1_y) == pain[6]:
+                            bluechip1_x,bluechip1_y = pain[7]
+                        elif (bluechip1_x,bluechip1_y) == pain[7]:
+                            bluechip1_x,bluechip1_y = pain[8]
+                        elif (bluechip1_x,bluechip1_y) == pain[8]:
+                            bluechip1_x,bluechip1_y = vain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[9]:
+                            bluechip1_x,bluechip1_y = vain[1]
+                        elif (bluechip1_x,bluechip1_y) == pain[10]:
+                            bluechip1_x,bluechip1_y = pain[11]
+                        elif (bluechip1_x,bluechip1_y) == pain[11]:
+                            bluechip1_x,bluechip1_y = pain[12]
+                        elif (bluechip1_x,bluechip1_y) == pain[12]:
+                            bluechip1_x,bluechip1_y = pain[13]
+                        elif (bluechip1_x,bluechip1_y) == pain[13]:
+                            bluechip1_x,bluechip1_y = pain[14]
+                        elif (bluechip1_x,bluechip1_y) == pain[14]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == pain[15]:
+                            bluechip1_x,bluechip1_y = pain[16]
+                        elif (bluechip1_x,bluechip1_y) == pain[16]:
+                            bluechip1_x,bluechip1_y = pain[17]
+                        elif (bluechip1_x,bluechip1_y) == pain[17]:
+                            bluechip1_x,bluechip1_y = pain[18]
+                        elif (bluechip1_x,bluechip1_y) == pain[18]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == kain[1]:
+                            bluechip1_x,bluechip1_y = kain[2]
+                        elif (bluechip1_x,bluechip1_y) == kain[2]:
+                            bluechip1_x,bluechip1_y = fain[0]
+                        elif (bluechip1_x,bluechip1_y) == kain[3]:
+                            bluechip1_x,bluechip1_y = fain[1]
+                        elif (bluechip1_x,bluechip1_y) == kain[4]:
+                            bluechip1_x,bluechip1_y = kain[5]
+                        elif (bluechip1_x,bluechip1_y) == kain[5]:
+                            bluechip1_x,bluechip1_y = kain[6]
+                        elif (bluechip1_x,bluechip1_y) == kain[6]:
+                            bluechip1_x,bluechip1_y = kain[7]
+                        elif (bluechip1_x,bluechip1_y) == kain[7]:
+                            bluechip1_x,bluechip1_y = kain[8]
+                        elif (bluechip1_x,bluechip1_y) == kain[8]:
+                            bluechip1_x,bluechip1_y = kain[9]
+                        elif (bluechip1_x,bluechip1_y) == kain[9]:
+                            bluechip1_x,bluechip1_y = kain[10]
+                        elif(bluechip1_x,bluechip1_y) == kain[10]:
+                            bluechip1_x,bluechip1_y = kain[11]
+                        elif(bluechip1_x,bluechip1_y) == vain[1]:
+                            bluechip1_x,bluechip1_y = vain[2]
+                        elif(bluechip1_x,bluechip1_y) == vain[2]:
+                            bluechip1_x,bluechip1_y = vain[3]
+                        elif(bluechip1_x,bluechip1_y) == vain[3]:
+                            bluechip1_x,bluechip1_y = vain[4]
+                        elif(bluechip1_x,bluechip1_y) == vain[4]:
+                            bluechip1_x,bluechip1_y = vain[5]
+                        elif(bluechip1_x,bluechip1_y) == vain[5]:
+                            bluechip1_x,bluechip1_y = vain[6]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            redchip1_x,redchip1_y = (700,20)
+                            catch=1
+                        cam = ['lol']
+                        break
+                
+                elif(cam=='개'):
+                    while True:
+                        if bluechip1_x == 567 and bluechip1_y == 340:
+                            bluechip1_x,bluechip1_y = pain[1]
+                        elif (bluechip1_x,bluechip1_y) == pain[0]:
+                            bluechip1_x,bluechip1_y = pain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[1]:
+                            bluechip1_x,bluechip1_y = pain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[2]: #갈림길 진입
+                            bluechip1_x,bluechip1_y = kain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[3]:
+                            bluechip1_x,bluechip1_y = pain[5]
+                        elif (bluechip1_x,bluechip1_y) == pain[4]: #갈림길 출발
+                            bluechip1_x,bluechip1_y = kain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[5]:
+                            bluechip1_x,bluechip1_y = pain[7]
+                        elif (bluechip1_x,bluechip1_y) == pain[6]:
+                            bluechip1_x,bluechip1_y = pain[8]
+                        elif (bluechip1_x,bluechip1_y) == pain[7]: #두번째 갈림길 진입
+                            bluechip1_x,bluechip1_y = vain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[8]:
+                            bluechip1_x,bluechip1_y = pain[10]
+                        elif (bluechip1_x,bluechip1_y) == pain[9]: #두번쨰 갈림길 출발
+                            bluechip1_x,bluechip1_y = vain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[10]:
+                            bluechip1_x,bluechip1_y = pain[12]
+                        elif (bluechip1_x,bluechip1_y) == pain[11]:
+                            bluechip1_x,bluechip1_y = pain[13]
+                        elif (bluechip1_x,bluechip1_y) == pain[12]:
+                            bluechip1_x,bluechip1_y = pain[14]
+                        elif (bluechip1_x,bluechip1_y) == pain[13]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == pain[14]:
+                            bluechip1_x,bluechip1_y = pain[16]
+                        elif (bluechip1_x,bluechip1_y) == pain[15]:
+                            bluechip1_x,bluechip1_y = pain[17]
+                        elif (bluechip1_x,bluechip1_y) == pain[16]:
+                            bluechip1_x,bluechip1_y = pain[18]
+                        elif (bluechip1_x,bluechip1_y) == pain[17]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == pain[18]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == kain[1]: #최단 루트 진입
+                            bluechip1_x,bluechip1_y = fain[0]
+                        elif (bluechip1_x,bluechip1_y) == kain[2]:
+                            bluechip1_x,bluechip1_y = kain[4]
+                        elif (bluechip1_x,bluechip1_y) == kain[3]: #최단 루트 출발
+                            bluechip1_x,bluechip1_y = fain[2]
+                        elif (bluechip1_x,bluechip1_y) == kain[4]:
+                            bluechip1_x,bluechip1_y = pain[14]
+                        elif (bluechip1_x,bluechip1_y) == kain[5]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == fain[1]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == fain[2]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == vain[1]:
+                            bluechip1_x,bluechip1_y = vain[3]
+                        elif (bluechip1_x,bluechip1_y) == vain[2]:
+                            bluechip1_x,bluechip1_y = vain[4]
+                        elif (bluechip1_x,bluechip1_y) == vain[3]:
+                            bluechip1_x,bluechip1_y = vain[5]
+                        elif (bluechip1_x,bluechip1_y) == vain[4]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == vain[5]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            redchip1_x,redchip1_y = (700,20)
+                            catch=1
+                        if(redchip1_x,redchip1_y)==pain[19]:
+                            gEnd = pg.image.load("")
+                        cam = ['give']
+                        break
+
+                elif(cam=='걸'):
+                    while True:
+                        if bluechip1_x == 567 and bluechip1_y == 340:
+                            bluechip1_x,bluechip1_y = pain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[0]:
+                            bluechip1_x,bluechip1_y = pain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[1]: #갈림길 진입
+                            bluechip1_x,bluechip1_y = kain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[2]: 
+                            bluechip1_x,bluechip1_y = pain[5]
+                        elif (bluechip1_x,bluechip1_y) == pain[3]:
+                            bluechip1_x,bluechip1_y = pain[6]
+                        elif (bluechip1_x,bluechip1_y) == pain[4]: #갈림길 출발 #최단 루트 진입
+                            bluechip1_x,bluechip1_y = kain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[5]:
+                            bluechip1_x,bluechip1_y = pain[8]
+                        elif (bluechip1_x,bluechip1_y) == pain[6]: #두번째 갈림길 진입
+                            bluechip1_x,bluechip1_y = vain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[7]: 
+                            bluechip1_x,bluechip1_y = pain[10]
+                        elif (bluechip1_x,bluechip1_y) == pain[8]:
+                            bluechip1_x,bluechip1_y = pain[11]
+                        elif (bluechip1_x,bluechip1_y) == pain[9]: #두번쨰 갈림길 출발
+                            bluechip1_x,bluechip1_y = vain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[10]:
+                            bluechip1_x,bluechip1_y = pain[13]
+                        elif (bluechip1_x,bluechip1_y) == pain[11]:
+                            bluechip1_x,bluechip1_y = pain[14]
+                        elif (bluechip1_x,bluechip1_y) == pain[12]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == pain[13]:
+                            bluechip1_x,bluechip1_y = pain[16]
+                        elif (bluechip1_x,bluechip1_y) == pain[14]:
+                            bluechip1_x,bluechip1_y = pain[17]
+                        elif (bluechip1_x,bluechip1_y) == pain[15]:
+                            bluechip1_x,bluechip1_y = pain[18]
+                        elif (bluechip1_x,bluechip1_y) == pain[16]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == pain[17]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == pain[18]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == kain[1]:
+                            bluechip1_x,bluechip1_y = kain[4]
+                        elif (bluechip1_x,bluechip1_y) == kain[2]:
+                            bluechip1_x,bluechip1_y = kain[5]
+                        elif (bluechip1_x,bluechip1_y) == kain[3]: #최단 루트 출발
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == kain[4]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == kain[5]:
+                            bluechip1_x,bluechip1_y = pain[16]
+                        elif (bluechip1_x,bluechip1_y) == fain[1]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == fain[2]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == vain[1]:
+                            bluechip1_x,bluechip1_y = vain[4]
+                        elif (bluechip1_x,bluechip1_y) == vain[2]:
+                            bluechip1_x,bluechip1_y = vain[5]
+                        elif (bluechip1_x,bluechip1_y) == vain[3]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == vain[4]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == vain[5]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            redchip1_x,redchip1_y = (700,20)
+                            catch=1
+                        cam = ['us']
+                        break
+
+                elif(cam=='빽도'):
+                    while True:
+                        if bluechip1_x == 567 and bluechip1_y == 340:
+                            bluechip1_x,bluechip1_y = (700,70)
+                        elif (bluechip1_x,bluechip1_y) == pain[0]:
+                            bluechip1_x,bluechip1_y = pain[19]
+                        elif (bluechip1_x,bluechip1_y) == pain[1]: 
+                            bluechip1_x,bluechip1_y = pain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[2]: 
+                            bluechip1_x,bluechip1_y = pain[1]
+                        elif (bluechip1_x,bluechip1_y) == pain[3]:
+                            bluechip1_x,bluechip1_y = pain[2]
+                        elif (bluechip1_x,bluechip1_y) == pain[4]: 
+                            bluechip1_x,bluechip1_y = pain[3]
+                        elif (bluechip1_x,bluechip1_y) == pain[5]: #갈림길 진입
+                            bluechip1_x,bluechip1_y = kain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[6]: 
+                            bluechip1_x,bluechip1_y = pain[5]
+                        elif (bluechip1_x,bluechip1_y) == pain[7]: 
+                            bluechip1_x,bluechip1_y = pain[6]
+                        elif (bluechip1_x,bluechip1_y) == pain[8]: 
+                            bluechip1_x,bluechip1_y = pain[7]
+                        elif (bluechip1_x,bluechip1_y) == pain[9]: 
+                            bluechip1_x,bluechip1_y = pain[8]
+                        elif (bluechip1_x,bluechip1_y) == pain[10]: #두번째 갈림길 진입
+                            bluechip1_x,bluechip1_y = vain[0]
+                        elif (bluechip1_x,bluechip1_y) == pain[11]:
+                            bluechip1_x,bluechip1_y = pain[10]
+                        elif (bluechip1_x,bluechip1_y) == pain[12]:
+                            bluechip1_x,bluechip1_y = pain[11]
+                        elif (bluechip1_x,bluechip1_y) == pain[13]:
+                            bluechip1_x,bluechip1_y = pain[12]
+                        elif (bluechip1_x,bluechip1_y) == pain[14]:
+                            bluechip1_x,bluechip1_y = pain[13]
+                        elif (bluechip1_x,bluechip1_y) == pain[15]:
+                            bluechip1_x,bluechip1_y = pain[14]
+                        elif (bluechip1_x,bluechip1_y) == pain[16]:
+                            bluechip1_x,bluechip1_y = pain[15]
+                        elif (bluechip1_x,bluechip1_y) == pain[17]:
+                            bluechip1_x,bluechip1_y = pain[16]
+                        elif (bluechip1_x,bluechip1_y) == pain[18]:
+                            bluechip1_x,bluechip1_y = pain[17]
+                        elif (bluechip1_x,bluechip1_y) == kain[1]:
+                            bluechip1_x,bluechip1_y = pain[4]
+                        elif (bluechip1_x,bluechip1_y) == kain[2]:
+                            bluechip1_x,bluechip1_y = kain[1]
+                        elif (bluechip1_x,bluechip1_y) == kain[3]: 
+                            bluechip1_x,bluechip1_y = kain[2]
+                        elif (bluechip1_x,bluechip1_y) == kain[4]: #최단 루트 진입
+                            bluechip1_x,bluechip1_y = fain[0]
+                        elif (bluechip1_x,bluechip1_y) == kain[5]:
+                            bluechip1_x,bluechip1_y = kain[4]
+                        elif (bluechip1_x,bluechip1_y) == fain[1]:
+                            bluechip1_x,bluechip1_y = kain[3]
+                        elif (bluechip1_x,bluechip1_y) == fain[2]:
+                            bluechip1_x,bluechip1_y = fain[2]
+                        elif (bluechip1_x,bluechip1_y) == vain[1]:
+                            bluechip1_x,bluechip1_y = pain[9]
+                        elif (bluechip1_x,bluechip1_y) == vain[2]:
+                            bluechip1_x,bluechip1_y = vain[1]
+                        elif (bluechip1_x,bluechip1_y) == vain[3]:
+                            bluechip1_x,bluechip1_y = vain[2]
+                        elif (bluechip1_x,bluechip1_y) == vain[4]:
+                            bluechip1_x,bluechip1_y = vain[3]
+                        elif (bluechip1_x,bluechip1_y) == vain[5]:
+                            bluechip1_x,bluechip1_y = vain[4]
+                        if (redchip1_x,redchip1_y) == (bluechip1_x,bluechip1_y):
+                            redchip1_x,redchip1_y = (700,20)
+                            catch=1
+
+                        cam = ['A+']
+                        break
+                elif(cam=='낙'):
+                    if(bluechip1_x,bluechip1_y) == pain[20]:
+                        bluechip1_x,bluechip1_y = (700,70)
+                    print('다음 기회에~~')
+
         if event.type == pg.QUIT:
             break
         elif event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
@@ -382,14 +1139,20 @@ def runGame():
                     scme = fo3.render("NAK!!! CHIP DON'T MOVES",False,BLACK)
 
         screen.blit(yut,(720,210))
-        if oneMore >= 1:
+        if oneMore == 1 and catch == 1:
             screen.blit(onemore,(610,430))  
             screen.blit(scme,(30,425)) 
-            screen.blit(scme1,(30,460))    
+            screen.blit(scme2,(30,460))
+        elif oneMore == 1:
+            screen.blit(onemore,(610,430))
+            screen.blit(scme,(30,425)) 
+            screen.blit(scme1,(30,460))
+        elif catch == 1:
+            screen.blit(onemore,(610,430))
         else:
             screen.blit(ty,(610,430))
             screen.blit(scme,(30,450))
         pg.display.update()
 
-runGame()
+runGame()    
 pg.quit()
